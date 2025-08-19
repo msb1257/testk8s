@@ -41,7 +41,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: webapp.war
-        path: $GITHUB_WORKSPACE/${GITHUB_REPOSITORY##*/}/webapp/target/webapp.war
+        path: $GITHUB_WORKSPACE/webapp/target/webapp.war
 
   Deploy:
     runs-on: self-hosted
