@@ -11,8 +11,6 @@ name: Newtons College Website
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
 env:
   WORKSPACE_PATH: "${{ github.workspace }}"
