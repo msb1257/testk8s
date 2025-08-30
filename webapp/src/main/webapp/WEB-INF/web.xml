@@ -3,7 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
-  <display-name>saradhi</display-name>
+<!-- URLRewriteFilter Configuration -->
+    <filter>
+        <filter-name>urlRewriteFilter</filter-name>
+        <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+        <init-param>
+            <param-name>configFile</param-name>
+            <param-value>/WEB-INF/urlrewrite.xml</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>urlRewriteFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+         <display-name>webapp</display-name>
   <!--
   <servlet>
   <servlet-name>HelloWorldExample</servlet-name>
