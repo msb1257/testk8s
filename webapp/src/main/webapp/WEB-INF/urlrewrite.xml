@@ -1,0 +1,7 @@
+<urlrewrite>
+    <rule>
+        <from>^http://13.60.3.177:8080/(.*)$</from>
+        <to>http://saradhi1.com/$1</to>
+        <status>301</status> <!-- Permanent Redirect -->
+    </rule>
+</urlrewrite>
