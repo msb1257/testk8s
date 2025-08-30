@@ -195,7 +195,7 @@ span.psw {
             <!--text-->
             <div class="home-text" >
                 
-                <h3 style="color: white; letter-spacing: 3px;">Welcome to Saradhi's College</h3>
+                <h3 style="color: white; letter-spacing: 3px;">Welcome to Pardhu's College</h3>
                 <h1 style="color: white;"> </h1>
                 <p style="color: white;">The purpose of My College is to prepare students with promise
                     to enhance their intellectual, physical, social, emotional, spiritual,
