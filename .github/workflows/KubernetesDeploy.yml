@@ -47,9 +47,9 @@ jobs:
           name: webapp.war
           path: ./
     - name: deploy to prod
+      env:
+        version: ${{ github.run_number }}
       run: |
-        env:
-          version: ${{ github.run_number }}
         echo "display artifacts"
         ls -ltr
         pwd
