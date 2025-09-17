@@ -48,17 +48,20 @@ jobs:
           path: ./
     - name: deploy to prod
       run: |
+        env:
+          version: ${{ github.run_number }}
         echo "display artifacts"
         ls -ltr
         pwd
         find -name Dockerfile
         #Build docker image with your war file 
-        sudo docker build -t my-tomcat-app:v2.0 .
+        sudo docker build -t my-tomcat-app:${version} .
         docker images
         echo "load in kind cluster"
-        kind load docker-image my-tomcat-app:v2.0 --name kind
+        kind load docker-image my-tomcat-app:${version} --name kind
         echo "verify  image"
-        docker exec -it kind-control-plane crictl images | grep my-tomcat-app
+        #docker exec -it kind-control-plane crictl images | grep my-tomcat-app
+        sed -i "s/tag/$version/g" deploy.yml
         kubectl apply -f deploy.yml
         ip=`curl -s http://checkip.amazonaws.com`
         echo "https://${ip}:30080"
