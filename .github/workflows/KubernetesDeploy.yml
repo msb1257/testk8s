@@ -39,24 +39,27 @@ jobs:
     runs-on: self-hosted
     needs: build
     steps:
+    - uses: actions/checkout@v3
     
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
+    - name: Download artifacts
+      uses: actions/download-artifact@v4
+      with:
           name: webapp.war
           path: ./artifacts
-      - name: deploy to prod
-        run: |
-          echo "display artifacts"
-          ls -ltr ./artifacts
-          #Build docker image with your war file 
-          sudo docker build -t my-tomcat-app:v2.0 .
-          docker images
-          echo "load in kind cluster"
-          kind load docker-image my-tomcat-app:v2.0 --name kind
-          echo "verify  image"
-          docker exec -it kind-control-plane crictl images | grep my-tomcat-app
-          kubectl apply -f deploy.yml
-          ip=`curl -s http://checkip.amazonaws.com`
-          echo "https://${ip}:30080"
-          echo "completed"
+    - name: deploy to prod
+      run: |
+        echo "display artifacts"
+        ls -ltr ./artifacts
+        pwd
+        find -name Dockerfile
+        #Build docker image with your war file 
+        sudo docker build -t my-tomcat-app:v2.0 .
+        docker images
+        echo "load in kind cluster"
+        kind load docker-image my-tomcat-app:v2.0 --name kind
+        echo "verify  image"
+        docker exec -it kind-control-plane crictl images | grep my-tomcat-app
+        kubectl apply -f deploy.yml
+        ip=`curl -s http://checkip.amazonaws.com`
+        echo "https://${ip}:30080"
+        echo "completed"
