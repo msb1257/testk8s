@@ -64,5 +64,5 @@ jobs:
         sed -i "s/tag/$version/g" deploy.yml
         kubectl apply -f deploy.yml
         ip=`curl -s http://checkip.amazonaws.com`
-        echo "https://${ip}:30080"
+        echo "http://${ip}:30080"
         echo "completed"
