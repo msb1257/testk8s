@@ -45,11 +45,11 @@ jobs:
       uses: actions/download-artifact@v4
       with:
           name: webapp.war
-          path: ./artifacts
+          path: ./
     - name: deploy to prod
       run: |
         echo "display artifacts"
-        ls -ltr ./artifacts
+        ls -ltr
         pwd
         find -name Dockerfile
         #Build docker image with your war file 
